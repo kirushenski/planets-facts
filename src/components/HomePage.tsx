@@ -1,10 +1,7 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
-import { Stats } from './Stats'
-import IconPlanetMercury from '~icons/content/planet-mercury.svg'
-// import IconPlanetMercuryInternal from '~icons/content/planet-mercury-internal.svg'
-// import picGeologyMercury from '~images/geology-mercury.png'
-import IconSource from '~icons/icon-source.svg'
+import { PlanetStats } from './PlanetStats'
+import { PlanetTabs } from './PlanetTabs'
 
 export type HomePageProps = ComponentPropsWithoutRef<'div'>
 
@@ -50,43 +47,9 @@ export const HomePage = (props: HomePageProps) => {
       </Header>
 
       <Main>
-        <MainSection>
-          <PlanetView>
-            <IconPlanetMercury />
-          </PlanetView>
+        <PlanetTabs name={data.name} overview={data.overview} structure={data.structure} geology={data.geology} />
 
-          <Info>
-            <PlanetName>{data.name}</PlanetName>
-
-            <Text>
-              <blockquote cite={data.overview.source}>
-                <p>{data.overview.content}</p>
-              </blockquote>
-              <Source>
-                Source:{' '}
-                <cite>
-                  <WikiLink href={data.overview.source} target="_blank" rel="nofollow noopener noreferrer">
-                    Wikipedia <IconSource />
-                  </WikiLink>
-                </cite>
-              </Source>
-            </Text>
-
-            <Tabs>
-              <Tab>
-                <TabNumber>01</TabNumber> Overview
-              </Tab>
-              <Tab>
-                <TabNumber>02</TabNumber> Internal Structure
-              </Tab>
-              <Tab>
-                <TabNumber>03</TabNumber> Surface Geology
-              </Tab>
-            </Tabs>
-          </Info>
-        </MainSection>
-
-        <Stats
+        <PlanetStats
           rotation={data.rotation}
           revolution={data.revolution}
           radius={data.radius}
@@ -133,63 +96,4 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   gap: 87px;
-`
-
-const PlanetName = styled.h1`
-  font: var(--font-h1);
-  text-transform: uppercase;
-  margin-bottom: 23px;
-`
-
-const Text = styled.figure`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 39px;
-`
-
-const Source = styled.figcaption`
-  color: hsl(var(--hsl-white) / 0.5);
-`
-
-const WikiLink = styled.a`
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-`
-
-const MainSection = styled.section`
-  display: flex;
-  gap: 20px;
-`
-
-const PlanetView = styled.div`
-  flex-grow: 1;
-`
-
-const Info = styled.div`
-  width: 350px;
-`
-
-const Tabs = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`
-
-const Tab = styled.div`
-  position: relative;
-  padding: 12px 28px 11px 74px;
-  border: 1px solid hsl(var(--hsl-white) / 0.2);
-  font: var(--font-h3);
-  letter-spacing: 0.026em;
-  text-transform: uppercase;
-`
-
-const TabNumber = styled.div`
-  position: absolute;
-  left: 28px;
-  top: 12px;
-  color: hsl(var(--hsl-white) / 0.5);
 `

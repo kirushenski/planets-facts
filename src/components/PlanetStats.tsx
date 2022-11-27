@@ -1,23 +1,18 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 
-export type StatsProps = ComponentPropsWithoutRef<'section'> & {
+export type PlanetStatsProps = ComponentPropsWithoutRef<'section'> & {
   rotation: number
   revolution: number
   radius: number
   temperature: number
 }
 
-// rotation: '58.6 Days',
-// revolution: '87.97 Days',
-// radius: '2,439.7 KM',
-// temperature: '430°c',
-
 // TODO Format numbers
 
-export const Stats = ({ rotation, revolution, radius, temperature, ...props }: StatsProps) => {
+export const PlanetStats = ({ rotation, revolution, radius, temperature, ...props }: PlanetStatsProps) => {
   return (
-    <Wrapper {...props}>
+    <section {...props}>
       <List>
         <Block>
           <Name>Rotation Time</Name>
@@ -39,11 +34,9 @@ export const Stats = ({ rotation, revolution, radius, temperature, ...props }: S
           <Value>{temperature}°C</Value>
         </Block>
       </List>
-    </Wrapper>
+    </section>
   )
 }
-
-const Wrapper = styled.section``
 
 const List = styled.dl`
   display: grid;
