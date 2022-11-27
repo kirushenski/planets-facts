@@ -118,6 +118,10 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   :disabled {
     cursor: not-allowed;
   }

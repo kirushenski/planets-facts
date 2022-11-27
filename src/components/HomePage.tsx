@@ -1,7 +1,9 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
+import { Header } from './Header'
 import { PlanetStats } from './PlanetStats'
 import { PlanetTabs } from './PlanetTabs'
+import IconBackgroundStars from '~icons/content/background-stars.svg'
 
 export type HomePageProps = ComponentPropsWithoutRef<'div'>
 
@@ -28,23 +30,15 @@ const data = {
   temperature: 430,
 }
 
-const planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptun']
-
 // TODO Align main content vertically in center
+// TODO Fix global height issue: from html to wrapper (relates to bg size)
 
 export const HomePage = (props: HomePageProps) => {
   return (
     <Wrapper {...props}>
-      <Header>
-        <Logo>The planets</Logo>
-        <nav>
-          <PlanetsList>
-            {planets.map((planet) => (
-              <li key={planet}>{planet}</li>
-            ))}
-          </PlanetsList>
-        </nav>
-      </Header>
+      <Background />
+
+      <Header />
 
       <Main>
         <PlanetTabs name={data.name} overview={data.overview} structure={data.structure} geology={data.geology} />
@@ -61,31 +55,16 @@ export const HomePage = (props: HomePageProps) => {
 }
 
 const Wrapper = styled.div`
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `
 
-const Logo = styled.div`
-  font: 400 28px/36px var(--font-family-antonio);
-  letter-spacing: -0.0105em;
-  text-transform: uppercase;
-`
-
-const PlanetsList = styled.ol`
-  display: flex;
-  align-items: center;
-  gap: 33px;
-  font: var(--font-h4);
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-`
-
-const Header = styled.header`
-  padding: 22px 40px 27px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+const Background = styled(IconBackgroundStars)`
+  position: absolute;
+  inset: 0;
+  width: 100%;
 `
 
 const Main = styled.main`

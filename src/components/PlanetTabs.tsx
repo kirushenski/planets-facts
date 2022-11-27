@@ -189,4 +189,5 @@ const WikiLink = styled.a`
   align-items: center;
   gap: 8px;
   font-weight: 700;
+  text-decoration: underline;
 `
