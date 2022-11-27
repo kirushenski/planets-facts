@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
+import { PLANETS } from '~lib/constants'
 
 export type HeaderProps = ComponentPropsWithoutRef<'header'>
-
-const planets = ['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptun']
-
-// TODO Improvise hover / active states for links (single underline animation?)
 
 export const Header = (props: HeaderProps) => {
   return (
@@ -14,7 +11,7 @@ export const Header = (props: HeaderProps) => {
       <Logo>The planets</Logo>
       <nav>
         <PlanetsList>
-          {planets.map((planet) => (
+          {PLANETS.map((planet) => (
             <li key={planet}>
               <PlanetName href={planet}>{planet}</PlanetName>
             </li>
@@ -26,7 +23,6 @@ export const Header = (props: HeaderProps) => {
 }
 
 const Wrapper = styled.header`
-  isolation: isolate;
   padding: 0 24px 0 32px;
   display: flex;
   justify-content: space-between;

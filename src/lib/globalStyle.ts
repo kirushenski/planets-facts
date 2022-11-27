@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --hsl-jupiter: 2 68% 53%;
     --hsl-saturn: 17 73% 46%;
     --hsl-uranus: 169 73% 44%;
-    --hsl-neptun: 222 87% 56%;
+    --hsl-neptune: 222 87% 56%;
 
     /* Colors */
     --color-white: hsl(var(--hsl-white));
@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     --color-jupiter: hsl(var(--hsl-jupiter));
     --color-saturn: hsl(var(--hsl-saturn));
     --color-uranus: hsl(var(--hsl-uranus));
-    --color-neptun: hsl(var(--hsl-neptun));
+    --color-neptune: hsl(var(--hsl-neptune));
 
     /* Grid */
     --spacing-base: 8px;

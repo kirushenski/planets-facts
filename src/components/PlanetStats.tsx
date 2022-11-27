@@ -1,14 +1,9 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
+import { PlanetData } from '~types/index'
 
-export type PlanetStatsProps = ComponentPropsWithoutRef<'section'> & {
-  rotation: number
-  revolution: number
-  radius: number
-  temperature: number
-}
-
-// TODO Format numbers
+export type PlanetStatsProps = ComponentPropsWithoutRef<'section'> &
+  Pick<PlanetData, 'rotation' | 'revolution' | 'radius' | 'temperature'>
 
 export const PlanetStats = ({ rotation, revolution, radius, temperature, ...props }: PlanetStatsProps) => {
   return (
@@ -16,22 +11,22 @@ export const PlanetStats = ({ rotation, revolution, radius, temperature, ...prop
       <List>
         <Block>
           <Name>Rotation Time</Name>
-          <Value>{rotation} Days</Value>
+          <Value>{rotation}</Value>
         </Block>
 
         <Block>
           <Name>Revolution Time</Name>
-          <Value>{revolution} Days</Value>
+          <Value>{revolution}</Value>
         </Block>
 
         <Block>
           <Name>Radius</Name>
-          <Value>{radius} KM</Value>
+          <Value>{radius}</Value>
         </Block>
 
         <Block>
           <Name>Temperature</Name>
-          <Value>{temperature}°C</Value>
+          <Value>{temperature}</Value>
         </Block>
       </List>
     </section>

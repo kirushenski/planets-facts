@@ -2,45 +2,35 @@ import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import * as Tabs from '@radix-ui/react-tabs'
 import Image from 'next/image'
-import IconPlanetMercury from '~icons/content/planet-mercury.svg'
-import IconPlanetMercuryInternal from '~icons/content/planet-mercury-internal.svg'
-import picGeologyMercury from '~images/geology-mercury.png'
 import IconSource from '~icons/icon-source.svg'
+import { planetImagesMap } from '~lib/planetImagesMap'
+import { PlanetData } from '~types/index'
+import { Planet } from '~lib/constants'
 
-interface TabContent {
-  content: string
-  source: string
-}
+export type PlanetTabsProps = ComponentPropsWithoutRef<'section'> &
+  Pick<PlanetData, 'id' | 'name' | 'overview' | 'structure' | 'geology'>
 
-export type PlanetTabsProps = ComponentPropsWithoutRef<'section'> & {
-  name: string
-  overview: TabContent
-  structure: TabContent
-  geology: TabContent
-}
+export const PlanetTabs = ({ id, name, overview, structure, geology, ...props }: PlanetTabsProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { IconOverview, IconStructure, picGeology } = planetImagesMap[id]
 
-// TODO Pass primary colors (or planet id)
-// TODO Extract tabs content and maybe tabs list into components
-// TODO Fix hover color
-
-export const PlanetTabs = ({ name, overview, structure, geology, ...props }: PlanetTabsProps) => {
   return (
     <section {...props}>
       <TabsRoot defaultValue="overview" orientation="vertical">
         <TabsList aria-label="Select info section">
-          <TabsTrigger value="overview">
+          <TabsTrigger value="overview" planetId={id}>
             <TabNumber>01</TabNumber> Overview
           </TabsTrigger>
-          <TabsTrigger value="structure">
+          <TabsTrigger value="structure" planetId={id}>
             <TabNumber>02</TabNumber> Internal Structure
           </TabsTrigger>
-          <TabsTrigger value="geology">
+          <TabsTrigger value="geology" planetId={id}>
             <TabNumber>03</TabNumber> Surface Geology
           </TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
           <PlanetView>
-            <IconPlanetMercury />
+            <IconOverview />
           </PlanetView>
 
           <Info>
@@ -63,7 +53,7 @@ export const PlanetTabs = ({ name, overview, structure, geology, ...props }: Pla
         </TabsContent>
         <TabsContent value="structure">
           <PlanetView>
-            <IconPlanetMercuryInternal />
+            <IconStructure />
           </PlanetView>
 
           <Info>
@@ -86,7 +76,7 @@ export const PlanetTabs = ({ name, overview, structure, geology, ...props }: Pla
         </TabsContent>
         <TabsContent value="geology">
           <PlanetView>
-            <Image src={picGeologyMercury.src} width={326} height={398} alt="" />
+            <Image src={picGeology.src} width={326} height={398} alt="" />
           </PlanetView>
 
           <Info>
@@ -129,7 +119,7 @@ const TabsList = styled(Tabs.List)`
   gap: 16px;
 `
 
-const TabsTrigger = styled(Tabs.Trigger)`
+const TabsTrigger = styled(Tabs.Trigger)<{ planetId: Planet }>`
   position: relative;
   padding: 12px 28px 11px 74px;
   border: 1px solid hsl(var(--hsl-white) / 0.2);
@@ -138,13 +128,13 @@ const TabsTrigger = styled(Tabs.Trigger)`
   text-transform: uppercase;
   transition: background-color var(--duration), border-color var(--duration);
 
-  &[data-state='active'] {
-    background-color: var(--color-mercury);
+  &:hover {
+    background-color: hsl(0 0% 85% / 0.2);
     border-color: transparent;
   }
 
-  &:hover {
-    background-color: hsl(0 0% 85% / 0.2);
+  &[data-state='active'] {
+    background-color: ${({ planetId }) => `var(--color-${planetId})`};
     border-color: transparent;
   }
 `

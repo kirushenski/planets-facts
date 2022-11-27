@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  async redirects() {
+    return [{ source: '/', destination: '/mercury', permanent: true }]
+  },
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
