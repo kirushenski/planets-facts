@@ -1,7 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
 
-// TODO Add letter-spacing (how to include it with font? Same for text-transform)
-
 const GlobalStyle = createGlobalStyle`
   :root {
     /* HSL */
@@ -49,9 +47,8 @@ const GlobalStyle = createGlobalStyle`
     --duration: 300ms;
 
     /* Normalize */
-    --body-color: var(--color-black);
-    --body-background: var(--color-white);
-    --link-underline-width: 2px;
+    --body-color: var(--color-white);
+    --body-background: var(--color-black);
     --focus-ring-width: 3px;
   }
 
@@ -119,12 +116,6 @@ const GlobalStyle = createGlobalStyle`
 
   li {
     list-style: none;
-  }
-
-  a {
-    text-decoration: none;
-    box-shadow: inset 0 calc(-1 * var(--link-underline-width)) 0 0 currentColor;
-    padding-bottom: var(--link-underline-width);
   }
 
   :disabled {
