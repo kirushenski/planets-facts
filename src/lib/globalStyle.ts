@@ -1,14 +1,36 @@
 import { createGlobalStyle } from 'styled-components'
 
+// TODO Add letter-spacing (how to include it with font? Same for text-transform)
+
 const GlobalStyle = createGlobalStyle`
   :root {
     /* HSL */
-    --hsl-black: 0 0% 0%;
     --hsl-white: 0 0% 100%;
+    --hsl-black: 240 67% 8%;
+    --hsl-grey: 240 17% 26%;
+    --hsl-grey-light: 240 6% 54%;
+    --hsl-mercury: 194 48% 49%;
+    --hsl-venus: 33 82% 61%;
+    --hsl-earth: 263 67% 51%;
+    --hsl-mars: 10 63% 51%;
+    --hsl-jupiter: 2 68% 53%;
+    --hsl-saturn: 17 73% 46%;
+    --hsl-uranus: 169 73% 44%;
+    --hsl-neptun: 222 87% 56%;
 
     /* Colors */
-    --color-black: hsl(var(--hsl-black));
     --color-white: hsl(var(--hsl-white));
+    --color-black: hsl(var(--hsl-black));
+    --color-grey: hsl(var(--hsl-grey));
+    --color-grey-light: hsl(var(--hsl-grey-light));
+    --color-mercury: hsl(var(--hsl-mercury));
+    --color-venus: hsl(var(--hsl-venus));
+    --color-earth: hsl(var(--hsl-earth));
+    --color-mars: hsl(var(--hsl-mars));
+    --color-jupiter: hsl(var(--hsl-jupiter));
+    --color-saturn: hsl(var(--hsl-saturn));
+    --color-uranus: hsl(var(--hsl-uranus));
+    --color-neptun: hsl(var(--hsl-neptun));
 
     /* Grid */
     --spacing-base: 8px;
@@ -64,7 +86,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    --font-body: 500 32px/48px var(--font-base);
+    --font-h1: 500 80px/103px var(--font-family-antonio);
+    --font-h2: 500 40px/52px var(--font-family-antonio);
+    --font-h3: 700 12px/25px var(--font-family-spartan);
+    --font-h4: 700 11px/25px var(--font-family-spartan);
+    --font-body: 400 14px/25px var(--font-family-spartan);
 
     font: var(--font-body);
     color: var(--body-color);
