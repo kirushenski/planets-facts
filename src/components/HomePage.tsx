@@ -16,7 +16,7 @@ export const HomePage = ({ planet, ...props }: HomePageProps) => {
     <Wrapper {...props}>
       <Background />
 
-      <Header />
+      <Header id={planet.id} />
 
       <Main>
         <PlanetTabs

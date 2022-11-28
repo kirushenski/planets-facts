@@ -1,12 +1,14 @@
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
-import { PLANETS } from '~lib/constants'
+import { Planet, PLANETS } from '~lib/constants'
 import { queries } from '~lib/mediaQueries'
 
-export type HeaderProps = ComponentPropsWithoutRef<'header'>
+export type HeaderProps = ComponentPropsWithoutRef<'header'> & {
+  id: Planet
+}
 
-export const Header = (props: HeaderProps) => {
+export const Header = ({ id, ...props }: HeaderProps) => {
   return (
     <Wrapper {...props}>
       <Logo>The planets</Logo>
@@ -14,7 +16,9 @@ export const Header = (props: HeaderProps) => {
         <PlanetsList>
           {PLANETS.map((planet) => (
             <li key={planet}>
-              <PlanetName href={planet}>{planet}</PlanetName>
+              <PlanetName href={planet} planetId={planet} isSelected={planet === id}>
+                {planet}
+              </PlanetName>
             </li>
           ))}
         </PlanetsList>
@@ -52,12 +56,15 @@ const PlanetsList = styled.ol`
   text-transform: uppercase;
 `
 
-const PlanetName = styled(Link)`
+const PlanetName = styled(Link)<{ planetId: Planet; isSelected: boolean }>`
   display: block;
-  padding: 33px 16px 27px;
+  padding: 33px 16px 28px;
+  border-bottom: 4px solid ${({ isSelected, planetId }) => (isSelected ? `var(--color-${planetId})` : 'transparent')};
+  transform: translateY(1px);
+  transition: border-color var(--duration);
 
   &:hover {
-    text-decoration: underline;
+    border-color: ${({ planetId }) => `var(--color-${planetId})`};
   }
 
   &:focus {

@@ -4,7 +4,7 @@ import { HomePage as HomePageComponent } from '~components/HomePage'
 import { Planet } from '~lib/constants'
 import { PlanetData } from '~types/index'
 
-// TODO User rem / multiplier for fonts. And think how to add letter-spacing / text-transform to text definitions
+// TODO User rem / multiplier for fonts. And think how to add letter-spacing (ems?!) / text-transform to text definitions
 // TODO How to properly manage query types?
 // TODO How to store types? d.ts without imports? constants?
 // TODO How to manage svgr any?
@@ -25,8 +25,6 @@ import { PlanetData } from '~types/index'
 // TODO Align main content vertically in center
 // TODO Fix global height issue: from html to wrapper (relates to bg size)
 // TODO Extract tabs content and tabs list into components
-// TODO Check focus styles (tabs outline offset is weird)
-// TODO Fix letter-spacings (why am I using ems?)
 
 // TODO WTF with gray colors? Why opacity is used everywhere?
 // TODO WTF with tabs trigger hover color?
