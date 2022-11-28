@@ -12,10 +12,12 @@ import { PlanetData } from '~types/index'
 // TODO How to manage dynamic static sites with Next? And how to pass images?
 // TODO Images map from optimization perspective
 // TODO Try out Next 13 / React 18 features
+// TODO Setup next-image with sizes
 
 // TODO Add 404 (interesting with blackhole or smth)
 // TODO Add tablet / mobile design
 // TODO Add multipage navigation shortcuts (arrows? swipe / carousel?)
+// TODO Animate stars / dynamic content
 
 // TODO Fix page jump based on text height
 // TODO Manage images height / position
@@ -24,10 +26,12 @@ import { PlanetData } from '~types/index'
 // TODO Fix global height issue: from html to wrapper (relates to bg size)
 // TODO Extract tabs content and tabs list into components
 // TODO Check focus styles (tabs outline offset is weird)
+// TODO Fix letter-spacings (why am I using ems?)
 
 // TODO WTF with gray colors? Why opacity is used everywhere?
 // TODO WTF with tabs trigger hover color?
 // TODO WTF with Regular Antonio for logo?
+// TODO AAAAAAAA fonts
 
 const data: Record<Planet, PlanetData> = {
   mercury: {

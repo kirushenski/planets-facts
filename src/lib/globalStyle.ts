@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import { queries } from './mediaQueries'
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -93,6 +94,10 @@ const GlobalStyle = createGlobalStyle`
     color: var(--body-color);
     background: var(--body-background);
     -webkit-font-smoothing: antialiased;
+
+    @media (${queries.tablet}) {
+      font: 400 11px/22px var(--font-family-spartan);
+    }
   }
 
   input, textarea, select {

@@ -1,5 +1,6 @@
 const sizes = {
   mobile: 768,
+  tablet: 1200,
 }
 
 export const queries = Object.fromEntries(

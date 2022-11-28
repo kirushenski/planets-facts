@@ -5,6 +5,7 @@ import { PlanetStats } from './PlanetStats'
 import { PlanetTabs } from './PlanetTabs'
 import IconBackgroundStars from '~icons/content/background-stars.svg'
 import { PlanetData } from '~types/index'
+import { queries } from '~lib/mediaQueries'
 
 export type HomePageProps = ComponentPropsWithoutRef<'div'> & {
   planet: PlanetData
@@ -54,10 +55,15 @@ const Background = styled(IconBackgroundStars)`
 const Main = styled.main`
   width: 100%;
   flex-grow: 1;
-  padding: 90px 20px 20px;
-  max-width: 1150px;
+  padding: 90px 40px 56px;
+  max-width: 1190px;
   align-self: center;
   display: flex;
   flex-direction: column;
   gap: 87px;
+
+  @media (${queries.tablet}) {
+    padding: 54px 40px 36px;
+    gap: 27px;
+  }
 `

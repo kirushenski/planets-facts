@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
+import { queries } from '~lib/mediaQueries'
 import { PlanetData } from '~types/index'
 
 export type PlanetStatsProps = ComponentPropsWithoutRef<'section'> &
@@ -37,6 +38,10 @@ const List = styled.dl`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+
+  @media (${queries.tablet}) {
+    gap: 11px;
+  }
 `
 
 const Block = styled.div`
@@ -45,17 +50,32 @@ const Block = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
+  @media (${queries.tablet}) {
+    padding: 16px 15px 19px;
+    gap: 6px;
+  }
 `
 
 const Name = styled.dt`
   font: var(--font-h4);
-  letter-spacing: 0.01em;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: hsl(var(--hsl-white) / 0.5);
+
+  @media (${queries.tablet}) {
+    font: 700 8px/16px var(--font-family-spartan);
+    letter-spacing: 0.73px;
+  }
 `
 
 const Value = styled.dd`
   font: var(--font-h2);
-  letter-spacing: -0.015em;
+  letter-spacing: -1.5px;
   text-transform: uppercase;
+
+  @media (${queries.tablet}) {
+    font: 500 24px/31px var(--font-family-antonio);
+    letter-spacing: -0.9px;
+  }
 `

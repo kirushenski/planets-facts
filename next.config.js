@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   async redirects() {
-    return [{ source: '/', destination: '/mercury', permanent: true }]
+    return [{ source: '/', destination: '/earth', permanent: true }]
   },
   reactStrictMode: true,
   compiler: {

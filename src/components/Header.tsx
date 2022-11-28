@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
 import { PLANETS } from '~lib/constants'
+import { queries } from '~lib/mediaQueries'
 
 export type HeaderProps = ComponentPropsWithoutRef<'header'>
 
@@ -29,11 +30,17 @@ const Wrapper = styled.header`
   align-items: center;
   gap: 20px;
   border-bottom: 1px solid hsl(var(--hsl-white) / 0.2);
+
+  @media (${queries.tablet}) {
+    flex-direction: column;
+    padding: 32px 24px 0 24px;
+    gap: 6px;
+  }
 `
 
 const Logo = styled.div`
   font: 400 28px/36px var(--font-family-antonio);
-  letter-spacing: -0.0105em;
+  letter-spacing: -1.05px;
   text-transform: uppercase;
 `
 
@@ -41,7 +48,7 @@ const PlanetsList = styled.ol`
   display: flex;
   align-items: center;
   font: var(--font-h4);
-  letter-spacing: 0.01em;
+  letter-spacing: 1px;
   text-transform: uppercase;
 `
 
