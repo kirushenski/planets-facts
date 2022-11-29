@@ -3,18 +3,14 @@ import styled from 'styled-components'
 import * as Tabs from '@radix-ui/react-tabs'
 import Image from 'next/image'
 import IconSource from '~icons/icon-source.svg'
-import { planetImagesMap } from '~lib/planetImagesMap'
 import { PlanetData } from '~types/index'
 import { Planet } from '~lib/constants'
 import { queries } from '~lib/mediaQueries'
 
 export type PlanetTabsProps = ComponentPropsWithoutRef<'section'> &
-  Pick<PlanetData, 'id' | 'name' | 'overview' | 'structure' | 'geology'>
+  Pick<PlanetData, 'id' | 'name' | 'overview' | 'structure' | 'geology' | 'images'>
 
-export const PlanetTabs = ({ id, name, overview, structure, geology, ...props }: PlanetTabsProps) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { IconOverview, IconStructure, picGeology } = planetImagesMap[id]
-
+export const PlanetTabs = ({ id, name, overview, structure, geology, images, ...props }: PlanetTabsProps) => {
   return (
     <section {...props}>
       <TabsRoot defaultValue="overview" orientation="vertical">
@@ -31,7 +27,7 @@ export const PlanetTabs = ({ id, name, overview, structure, geology, ...props }:
         </TabsList>
         <TabsContent value="overview">
           <PlanetView>
-            <IconOverview />
+            <Image src={images.overview} width={450} height={450} alt="" />
           </PlanetView>
 
           <Info>
@@ -54,7 +50,7 @@ export const PlanetTabs = ({ id, name, overview, structure, geology, ...props }:
         </TabsContent>
         <TabsContent value="structure">
           <PlanetView>
-            <IconStructure />
+            <Image src={images.structure} width={450} height={450} alt="" />
           </PlanetView>
 
           <Info>
@@ -77,7 +73,7 @@ export const PlanetTabs = ({ id, name, overview, structure, geology, ...props }:
         </TabsContent>
         <TabsContent value="geology">
           <PlanetView>
-            <Image src={picGeology.src} width={326} height={398} alt="" />
+            <Image src={images.geology} width={326} height={398} alt="" />
           </PlanetView>
 
           <Info>

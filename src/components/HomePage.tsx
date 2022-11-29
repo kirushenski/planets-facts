@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Header } from './Header'
 import { PlanetStats } from './PlanetStats'
 import { PlanetTabs } from './PlanetTabs'
-import IconBackgroundStars from '~icons/content/background-stars.svg'
+import IconBackgroundStars from '~icons/background-stars.svg'
 import { PlanetData } from '~types/index'
 import { queries } from '~lib/mediaQueries'
 
@@ -25,6 +25,7 @@ export const HomePage = ({ planet, ...props }: HomePageProps) => {
           overview={planet.overview}
           structure={planet.structure}
           geology={planet.geology}
+          images={planet.images}
         />
 
         <PlanetStats

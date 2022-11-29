@@ -15,4 +15,9 @@ interface PlanetData {
   revolution: string
   radius: string
   temperature: string
+  images: {
+    overview: string
+    structure: string
+    geology: string
+  }
 }
