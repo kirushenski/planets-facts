@@ -42,6 +42,13 @@ const List = styled.dl`
   @media (${queries.tablet}) {
     gap: 11px;
   }
+
+  @media (${queries.mobile}) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-inline: 24px;
+  }
 `
 
 const Block = styled.div`
@@ -49,11 +56,18 @@ const Block = styled.div`
   border: 1px solid hsl(var(--hsl-white) / 0.2);
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
 
   @media (${queries.tablet}) {
     padding: 16px 15px 19px;
     gap: 6px;
+  }
+
+  @media (${queries.mobile}) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 9px 24px 13px;
   }
 `
 
@@ -77,5 +91,10 @@ const Value = styled.dd`
   @media (${queries.tablet}) {
     font: 500 24px/31px var(--font-family-antonio);
     letter-spacing: -0.9px;
+  }
+
+  @media (${queries.mobile}) {
+    font: 500 20px/26px var(--font-family-antonio);
+    letter-spacing: -0.75px;
   }
 `

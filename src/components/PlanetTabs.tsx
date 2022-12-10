@@ -16,13 +16,23 @@ export const PlanetTabs = ({ id, name, overview, structure, geology, images, ...
       <TabsRoot defaultValue="overview" orientation="vertical">
         <TabsList aria-label="Select info section">
           <TabsTrigger value="overview" $planetId={id}>
-            <TabNumber>01</TabNumber> Overview
+            <MobileTabName $planetId={id}>Overview</MobileTabName>
+            <DesktopTabName>
+              <TabNumber>01</TabNumber> Overview
+            </DesktopTabName>
           </TabsTrigger>
           <TabsTrigger value="structure" $planetId={id}>
-            <TabNumber>02</TabNumber> Internal Structure
+            <MobileTabName $planetId={id}>Structure</MobileTabName>
+            <DesktopTabName>
+              <TabNumber>02</TabNumber> Internal Structure
+            </DesktopTabName>
           </TabsTrigger>
           <TabsTrigger value="geology" $planetId={id}>
-            <TabNumber>03</TabNumber> Surface Geology
+            <MobileTabName $planetId={id}>Geology</MobileTabName>
+            <DesktopTabName>
+              {' '}
+              <TabNumber>03</TabNumber> Surface Geology
+            </DesktopTabName>
           </TabsTrigger>
         </TabsList>
         <TabsContent value="overview">
@@ -115,6 +125,15 @@ const TabsRoot = styled(Tabs.Root)`
     grid-template-columns: 1fr 281px;
     gap: 69px;
   }
+
+  @media (${queries.mobile}) {
+    grid-template-areas:
+      'controls'
+      'picture'
+      'info';
+    grid-template-columns: 1fr;
+    gap: 69px;
+  }
 `
 
 const TabsList = styled(Tabs.List)`
@@ -123,6 +142,13 @@ const TabsList = styled(Tabs.List)`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (${queries.mobile}) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-bottom: 1px solid hsl(var(--hsl-white) / 0.2);
+  }
 `
 
 const TabsTrigger = styled(Tabs.Trigger)<{ $planetId: Planet }>`
@@ -140,14 +166,28 @@ const TabsTrigger = styled(Tabs.Trigger)<{ $planetId: Planet }>`
     letter-spacing: 1.93px;
   }
 
+  @media (${queries.mobile}) {
+    padding: 0 20px;
+    border: none;
+    transform: translateY(1px);
+  }
+
   &:hover {
-    background-color: hsl(0 0% 85% / 0.2);
-    border-color: transparent;
+    @media (${queries.mobileMin}) {
+      background-color: hsl(0 0% 85% / 0.2);
+      border-color: transparent;
+    }
+  }
+
+  &:focus {
+    outline-offset: -2px;
   }
 
   &[data-state='active'] {
-    background-color: ${({ $planetId }) => `var(--color-${$planetId})`};
-    border-color: transparent;
+    @media (${queries.mobileMin}) {
+      background-color: ${({ $planetId }) => `var(--color-${$planetId})`};
+      border-color: transparent;
+    }
   }
 `
 
@@ -163,6 +203,35 @@ const TabNumber = styled.div`
   }
 `
 
+const MobileTabName = styled.div<{ $planetId: Planet }>`
+  display: inline-block;
+  border-bottom: 4px solid transparent;
+  padding-block: 20px;
+  transition: border-color var(--duration);
+
+  @media (${queries.mobileMin}) {
+    display: none;
+  }
+
+  ${TabsTrigger}:hover & {
+    @media (${queries.mobile}) {
+      border-color: ${({ $planetId }) => `var(--color-${$planetId})`};
+    }
+  }
+
+  ${TabsTrigger}[data-state='active'] & {
+    @media (${queries.mobile}) {
+      border-color: ${({ $planetId }) => `var(--color-${$planetId})`};
+    }
+  }
+`
+
+const DesktopTabName = styled.div`
+  @media (${queries.mobile}) {
+    display: none;
+  }
+`
+
 const TabsContent = styled(Tabs.Content)`
   display: contents;
 `
@@ -173,10 +242,19 @@ const PlanetView = styled.div`
   @media (${queries.tablet}) {
     justify-self: center;
   }
+
+  @media (${queries.mobile}) {
+    padding-inline: 24px;
+  }
 `
 
 const Info = styled.div`
   grid-area: info;
+
+  @media (${queries.mobile}) {
+    padding-inline: 24px;
+    text-align: center;
+  }
 `
 
 const PlanetName = styled.h1`
@@ -187,6 +265,11 @@ const PlanetName = styled.h1`
   @media (${queries.tablet}) {
     font: 500 48px/62px var(--font-family-antonio);
     margin-bottom: 24px;
+  }
+
+  @media (${queries.mobile}) {
+    font: 500 40px/52px var(--font-family-antonio);
+    margin-bottom: 16px;
   }
 `
 

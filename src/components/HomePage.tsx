@@ -67,4 +67,9 @@ const Main = styled.main`
     padding: 54px 40px 36px;
     gap: 27px;
   }
+
+  @media (${queries.mobile}) {
+    padding: 0 0 47px;
+    gap: 28px;
+  }
 `
