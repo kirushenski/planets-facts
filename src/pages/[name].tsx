@@ -9,12 +9,7 @@ import { PlanetData } from '~types/index'
 // TODO How to properly manage query types?
 // TODO How to store types? d.ts without imports? constants?
 // TODO How to manage svgr any?
-// TODO Setup next-image with sizes
-// TODO Fix page jump based on text height
-// TODO Manage images height / position
-// TODO Improvise hover / active states for links (single underline animation like on mobile)
-// TODO Align main content vertically in center
-// TODO Fix global height issue: from html to wrapper (relates to bg size)
+// TODO Enable background illustration
 // TODO Extract tabs content and tabs list into components
 // TODO WTF with gray colors? Why opacity is used everywhere?
 // TODO WTF with tabs trigger hover color?

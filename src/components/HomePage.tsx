@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Header } from './Header'
 import { PlanetStats } from './PlanetStats'
 import { PlanetTabs } from './PlanetTabs'
-import IconBackgroundStars from '~icons/background-stars.svg'
+// import IconBackgroundStars from '~icons/background-stars.svg'
 import { PlanetData } from '~types/index'
 import { queries } from '~lib/mediaQueries'
 
@@ -14,7 +14,7 @@ export type HomePageProps = ComponentPropsWithoutRef<'div'> & {
 export const HomePage = ({ planet, ...props }: HomePageProps) => {
   return (
     <Wrapper id="root" {...props}>
-      <Background />
+      {/* <Background /> */}
 
       <Header id={planet.id} />
 
@@ -26,6 +26,7 @@ export const HomePage = ({ planet, ...props }: HomePageProps) => {
           structure={planet.structure}
           geology={planet.geology}
           images={planet.images}
+          sizes={planet.sizes}
         />
 
         <PlanetStats
@@ -46,30 +47,27 @@ const Wrapper = styled.div`
   flex-direction: column;
 `
 
-const Background = styled(IconBackgroundStars)`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  z-index: -1;
-`
+// const Background = styled(IconBackgroundStars)`
+//   position: absolute;
+//   inset: 0;
+//   width: 100%;
+//   z-index: -1;
+// `
 
 const Main = styled.main`
   width: 100%;
   flex-grow: 1;
-  padding: 90px 40px 56px;
+  padding: 0 40px 40px;
   max-width: 1190px;
   align-self: center;
   display: flex;
   flex-direction: column;
-  gap: 87px;
 
-  @media (${queries.tablet}) {
-    padding: 54px 40px 36px;
-    gap: 27px;
+  @media ${queries.tablet} {
+    gap: 25px;
   }
 
-  @media (${queries.mobile}) {
-    padding: 0 0 47px;
-    gap: 28px;
+  @media ${queries.mobile} {
+    padding: 0 0 40px;
   }
 `

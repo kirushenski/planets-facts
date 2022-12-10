@@ -39,11 +39,11 @@ const List = styled.dl`
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 
-  @media (${queries.tablet}) {
+  @media ${queries.tablet} {
     gap: 11px;
   }
 
-  @media (${queries.mobile}) {
+  @media ${queries.mobile} {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -59,12 +59,12 @@ const Block = styled.div`
   align-items: center;
   gap: 4px;
 
-  @media (${queries.tablet}) {
+  @media ${queries.tablet} {
     padding: 16px 15px 19px;
     gap: 6px;
   }
 
-  @media (${queries.mobile}) {
+  @media ${queries.mobile} {
     flex-direction: row;
     justify-content: space-between;
     padding: 9px 24px 13px;
@@ -77,7 +77,7 @@ const Name = styled.dt`
   text-transform: uppercase;
   color: hsl(var(--hsl-white) / 0.5);
 
-  @media (${queries.tablet}) {
+  @media ${queries.tablet} {
     font: 700 8px/16px var(--font-family-spartan);
     letter-spacing: 0.73px;
   }
@@ -88,12 +88,12 @@ const Value = styled.dd`
   letter-spacing: -1.5px;
   text-transform: uppercase;
 
-  @media (${queries.tablet}) {
+  @media ${queries.tablet} {
     font: 500 24px/31px var(--font-family-antonio);
     letter-spacing: -0.9px;
   }
 
-  @media (${queries.mobile}) {
+  @media ${queries.mobile} {
     font: 500 20px/26px var(--font-family-antonio);
     letter-spacing: -0.75px;
   }

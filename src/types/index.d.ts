@@ -20,4 +20,9 @@ interface PlanetData {
     structure: string
     geology: string
   }
+  sizes: {
+    desktop: number
+    tablet: number
+    mobile: number
+  }
 }

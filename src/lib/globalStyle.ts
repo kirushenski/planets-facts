@@ -50,6 +50,7 @@ const GlobalStyle = createGlobalStyle`
     /* Normalize */
     --body-color: var(--color-white);
     --body-background: var(--color-black);
+    --body-min-width: 375px;
     --focus-ring-width: 3px;
   }
 
@@ -93,9 +94,10 @@ const GlobalStyle = createGlobalStyle`
     font: var(--font-body);
     color: var(--body-color);
     background: var(--body-background);
+    min-width: var(--body-min-width);
     -webkit-font-smoothing: antialiased;
 
-    @media (${queries.tablet}) {
+    @media ${queries.tablet} {
       font: 400 11px/22px var(--font-family-spartan);
     }
   }

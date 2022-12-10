@@ -37,15 +37,15 @@ const Wrapper = styled.header`
   gap: 20px;
   border-bottom: 1px solid hsl(var(--hsl-white) / 0.2);
 
-  @media (${queries.tablet}) {
+  @media ${queries.tablet} {
     flex-direction: column;
     padding: 32px 24px 0 24px;
-    gap: 6px;
+    gap: 0;
   }
 
-  @media (${queries.mobile}) {
+  @media ${queries.mobile} {
     flex-direction: row;
-    padding: 0 0 0 16px;
+    padding: 0 0 0 24px;
   }
 `
 
@@ -56,15 +56,13 @@ const Logo = styled.div`
 `
 
 const MobileNav = styled(MobileMenu)`
-  display: none;
-
-  @media (${queries.mobile}) {
-    display: unset;
+  @media ${queries.mobileMin} {
+    display: none;
   }
 `
 
 const DesktopNav = styled.nav`
-  @media (${queries.mobile}) {
+  @media ${queries.mobile} {
     display: none;
   }
 `
