@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ComponentPropsWithoutRef } from 'react'
 import styled from 'styled-components'
+import { MobileMenu } from './MobileMenu'
 import { Planet, PLANETS } from '~lib/constants'
 import { queries } from '~lib/mediaQueries'
 
@@ -12,17 +13,18 @@ export const Header = ({ id, ...props }: HeaderProps) => {
   return (
     <Wrapper {...props}>
       <Logo>The planets</Logo>
-      <nav>
+      <MobileNav />
+      <DesktopNav>
         <PlanetsList>
           {PLANETS.map((planet) => (
             <li key={planet}>
-              <PlanetName href={planet} planetId={planet} isSelected={planet === id}>
+              <PlanetName href={planet} $planetId={planet} $isSelected={planet === id}>
                 {planet}
               </PlanetName>
             </li>
           ))}
         </PlanetsList>
-      </nav>
+      </DesktopNav>
     </Wrapper>
   )
 }
@@ -40,12 +42,31 @@ const Wrapper = styled.header`
     padding: 32px 24px 0 24px;
     gap: 6px;
   }
+
+  @media (${queries.mobile}) {
+    flex-direction: row;
+    padding: 0 0 0 16px;
+  }
 `
 
 const Logo = styled.div`
   font: 400 28px/36px var(--font-family-antonio);
   letter-spacing: -1.05px;
   text-transform: uppercase;
+`
+
+const MobileNav = styled(MobileMenu)`
+  display: none;
+
+  @media (${queries.mobile}) {
+    display: unset;
+  }
+`
+
+const DesktopNav = styled.nav`
+  @media (${queries.mobile}) {
+    display: none;
+  }
 `
 
 const PlanetsList = styled.ol`
@@ -56,15 +77,16 @@ const PlanetsList = styled.ol`
   text-transform: uppercase;
 `
 
-const PlanetName = styled(Link)<{ planetId: Planet; isSelected: boolean }>`
+const PlanetName = styled(Link)<{ $planetId: Planet; $isSelected: boolean }>`
   display: block;
   padding: 33px 16px 28px;
-  border-bottom: 4px solid ${({ isSelected, planetId }) => (isSelected ? `var(--color-${planetId})` : 'transparent')};
+  border-bottom: 4px solid
+    ${({ $isSelected, $planetId }) => ($isSelected ? `var(--color-${$planetId})` : 'transparent')};
   transform: translateY(1px);
   transition: border-color var(--duration);
 
   &:hover {
-    border-color: ${({ planetId }) => `var(--color-${planetId})`};
+    border-color: ${({ $planetId }) => `var(--color-${$planetId})`};
   }
 
   &:focus {

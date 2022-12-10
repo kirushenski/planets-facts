@@ -15,13 +15,13 @@ export const PlanetTabs = ({ id, name, overview, structure, geology, images, ...
     <section {...props}>
       <TabsRoot defaultValue="overview" orientation="vertical">
         <TabsList aria-label="Select info section">
-          <TabsTrigger value="overview" planetId={id}>
+          <TabsTrigger value="overview" $planetId={id}>
             <TabNumber>01</TabNumber> Overview
           </TabsTrigger>
-          <TabsTrigger value="structure" planetId={id}>
+          <TabsTrigger value="structure" $planetId={id}>
             <TabNumber>02</TabNumber> Internal Structure
           </TabsTrigger>
-          <TabsTrigger value="geology" planetId={id}>
+          <TabsTrigger value="geology" $planetId={id}>
             <TabNumber>03</TabNumber> Surface Geology
           </TabsTrigger>
         </TabsList>
@@ -125,7 +125,7 @@ const TabsList = styled(Tabs.List)`
   gap: 16px;
 `
 
-const TabsTrigger = styled(Tabs.Trigger)<{ planetId: Planet }>`
+const TabsTrigger = styled(Tabs.Trigger)<{ $planetId: Planet }>`
   position: relative;
   padding: 12px 28px 11px 74px;
   border: 1px solid hsl(var(--hsl-white) / 0.2);
@@ -146,7 +146,7 @@ const TabsTrigger = styled(Tabs.Trigger)<{ planetId: Planet }>`
   }
 
   &[data-state='active'] {
-    background-color: ${({ planetId }) => `var(--color-${planetId})`};
+    background-color: ${({ $planetId }) => `var(--color-${$planetId})`};
     border-color: transparent;
   }
 `

@@ -24,7 +24,6 @@ import { PlanetData } from '~types/index'
 // TODO Align main content vertically in center
 // TODO Fix global height issue: from html to wrapper (relates to bg size)
 // TODO Extract tabs content and tabs list into components
-// TODO Why CSS-in-JS adds my custom props to DOM? (server version?)
 
 // TODO WTF with gray colors? Why opacity is used everywhere?
 // TODO WTF with tabs trigger hover color?

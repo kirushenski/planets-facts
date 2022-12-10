@@ -13,7 +13,7 @@ export type HomePageProps = ComponentPropsWithoutRef<'div'> & {
 
 export const HomePage = ({ planet, ...props }: HomePageProps) => {
   return (
-    <Wrapper {...props}>
+    <Wrapper id="root" {...props}>
       <Background />
 
       <Header id={planet.id} />
